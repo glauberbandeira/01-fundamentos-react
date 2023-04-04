@@ -6,6 +6,37 @@ import styles from './App.module.css';
 
 import './global.css'
 
+const posts = [
+  {
+    id: 1,
+    author: {
+      avatarUrl: 'https://github.com/glauberbandeira.png',
+      name: 'Glauber Bandeira',
+      role: 'Dev FrontEnd @Rocketseat'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galera 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2022-05-03 20:00:00'),
+  },
+  {
+    id: 2,
+    author: {
+      avatarUrl: 'https://github.com/glauberbandeira.png',
+      name: 'Glauber',
+      role: 'Dev FrontEnd @Rocketseat'
+    },
+    content: [
+      { type: 'paragraph', content: 'Fala galera 👋' },
+      { type: 'paragraph', content: 'Acabei de subir mais um projeto no meu portifa. É um projeto que fiz no NLW Return, evento da Rocketseat. O nome do projeto é DoctorCare 🚀' },
+      { type: 'link', content: 'jane.design/doctorcare' },
+    ],
+    publishedAt: new Date('2022-05-10 20:00:00'),
+  },
+];
+
 export function App() {
 
   return (
@@ -16,14 +47,15 @@ export function App() {
         <Sidebar/>
 
         <main>
-          <Post
-            author="Glauber Bandeira"
-            content="12 razões para escolher React para seu próximo projeto de desenvolvimento web"
-          />
-          <Post
-            author="Fernando Bandeira"
-            content="React: Simplicidade, Reutilização e Performance em uma só Biblioteca!"
-          />
+          {posts.map(post => {
+            return (
+              <Post
+                author={post.author}
+                content={post.content}
+                publishedAt={post.publishedAt}
+              />
+            )
+          })}
         </main>
       </div>
     </div>
