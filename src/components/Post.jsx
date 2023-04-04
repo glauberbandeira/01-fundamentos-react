@@ -24,19 +24,23 @@ export function Post({ author, publishedAt, content }) {
     addSuffix: true
   });
 
-  function handleCrateNewComment() {
+  function handleCrateNewComment(event) {
     event.preventDefault()
 
     setComments([...comments, newCommentText]);
     setNewCommentText('');
   }
 
-  function handleNewCommentChange() {
+  function handleNewCommentChange(event) {
     setNewCommentText(event.target.value);
   }
 
-  function deleteComment(comment) {
-    console.log(`Deletar comentário ${comment}`)
+  function deleteComment(commentToDelete) {
+    const commentsWithoutDeleteOne = comments.filter(comment => {
+      return comment !== commentToDelete;
+    })
+
+    setComments(commentsWithoutDeleteOne)
   }
 
   return (
